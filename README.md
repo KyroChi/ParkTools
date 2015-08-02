@@ -1,3 +1,3 @@
 # ParkTools
 
-A rail creating plugin for terrain park designers
+A rail creating plugin for Sketchup designed for terrain park designers
