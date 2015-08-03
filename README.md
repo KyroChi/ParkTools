@@ -12,6 +12,11 @@ This plugin is very easy to install and run, simply download this project as a .
 
 ### TODO
 
+* Add double-barreled rails
+* Implement color feature
 * Add support for boxes
 * Add support for kinked rails
 * Add support for C and S rails
+* Add support for snow pads
+* Add support for jump lines
+* Improve Rail generator UI
