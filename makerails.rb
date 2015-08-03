@@ -67,7 +67,7 @@ UI.menu("Tools").add_item("Generate Rail") {
     
     defaults = ["New Rail", "Bar", "15", "5", "2", "6", "1", "3", "2", "1", "1", "1", "8", "1","1"]
     
-    list = ["", "Tube|Bar|Handrail", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    list = ["", "Tube|Bar|Double Barrel", "", "", "", "", "", "", "", "", "", "", "", "", ""]
     
     # Create input window
     input = UI.inputbox(prompts, defaults, list, "Park Tools Rail Generator")
@@ -121,13 +121,19 @@ def create_rail (n, t, l, w, h, o, c, d, h2, s, d2, c2, h3, w2, c3)
     
     
     # Generate sliding surface if tube is chosen
-    # TODO Fix this mechanic
     if r_type == "Tube"
-        center_point = Geom::Point3d.new(r_width, r_width, 0)
-        vector = Geom::Vector3d.new 0, 1, 0
-        vector2 = vector.normalize!
-        
-        edges = entities.add_circle center_point, vector2, r_width
+
+        radius = r_width / 2
+        center_point = Geom::Point3d.new(radius,0,s_height)
+        circle_orientation = Geom::Vector3d.new(0,1,0)
+
+        circle_perimeter = entities.add_circle center_point, circle_orientation, radius
+        circle = circle_perimeter[0]
+        tube_face = circle.curve
+
+        tube = entities.add_face tube_face
+        tube.pushpull r_length
+
     end
     
     
@@ -136,15 +142,40 @@ def create_rail (n, t, l, w, h, o, c, d, h2, s, d2, c2, h3, w2, c3)
     
     # Generate sliding surface if bar is chosen
     if r_type == "Bar"
-        
+
         pt1 = [0, 0, s_height]
         pt2 = [0, r_length, s_height]
         pt3 = [r_width, r_length, s_height]
         pt4 = [r_width, 0, s_height]
-        
+
         surface = entities.add_face pt1, pt2, pt3, pt4
         surface.pushpull -r_height
         
+    end
+
+
+
+
+
+    # Generate sliding surface if bar is chosen
+    if r_type == "Double Barrel"
+      location = 0
+      for barrel in 1..2
+
+        radius = r_width / 2
+        center_point = Geom::Point3d.new(radius + location,0,s_height)
+        circle_orientation = Geom::Vector3d.new(0,1,0)
+
+        circle_perimeter = entities.add_circle center_point, circle_orientation, radius
+        circle = circle_perimeter[0]
+        tube_face = circle.curve
+
+        tube = entities.add_face tube_face
+        tube.pushpull r_length
+
+        location += radius
+
+      end
     end
     
     
