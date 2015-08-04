@@ -3,10 +3,15 @@
 require 'ParkTools/function.rb'
 require 'ParkTools/rails'
 
+# Dialog dependencies
+require 'ParkTools/_ptui/dialogs/test_dialog'
+require 'ParkTools/_ptui/dialogs/generate_rail_dialog'
+
 module ParkTools
 
   # Create ParkTools menu in Tools > ParkTools
   menu = UI.menu("Tools")
+  menu.add_separator
   sub_menu = menu.add_submenu("Park Tools")
 
   input_menu = sub_menu.add_item("Generate Rail Core") {
@@ -18,6 +23,12 @@ module ParkTools
   test_menu = sub_menu.add_item("Test") {
 
     test_method
+
+  }
+
+  test_web = sub_menu.add_item("WebUI") {
+
+    show_generate_rail_dialog
 
   }
 

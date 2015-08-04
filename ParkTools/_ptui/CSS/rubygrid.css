@@ -1,0 +1,36 @@
+.block {
+    width : 100%;
+    max-width : 800px;
+    margin: auto;
+}
+
+.block *{
+    box-sizing: border-box;
+}
+
+.row:before,
+.row:after {
+    content : "";
+    display : table;
+    clear : both;
+}
+
+[class*='col-'] {
+    float : left;
+    min-height : 1px;
+    width : 16.66%;
+    padding : 12px;
+}
+
+.col-third {
+    width : 33.33%;
+}
+
+.col-half {
+    width : 50%;
+}
+
+.col-full {
+    width : 100%
+}
+
