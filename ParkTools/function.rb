@@ -1,15 +1,13 @@
-# Handles functionality for ParkTools
+# Defines methods that are accessed by the ParkTools UI
 
-require 'ParkTools/rails'
+require'ParkTools/rails.rb'
 
 module ParkTools
 
-  # Create menu option for generating rails
-  menu = UI.menu("Tools")
-  sub_menu = menu.add_submenu("Park Tools")
-  input_menu = sub_menu.add_item("Generate Rail Core") {
 
-    # All the prompts, defaults and lists for the input window
+  # UI command to access the generate rail prompt
+  def self.generate_rail_input
+
     prompts = ["Rail: Name",
                "Rail: Type",
                "Rail: Length",
@@ -35,12 +33,7 @@ module ParkTools
 
     create_rail(*input)
 
-  }
+  end
 
-  test_menu = sub_menu.add_item("Test") {
 
-    test_method
-
-  }
-
-end # ParkTools Module
+end

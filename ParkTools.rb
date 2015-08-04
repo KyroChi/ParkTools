@@ -33,6 +33,9 @@
 
 require 'sketchup.rb'
 require 'extensions.rb'
+require 'ParkTools/core.rb'
+require 'ParkTools/function.rb'
+require 'ParkTools/rails.rb'
 
 module ParkTools
 
