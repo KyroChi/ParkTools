@@ -1,44 +1,25 @@
+# Defines namespace methods for creating rails
+
 module ParkTools
 
-  # Create menu option for generating rails
-  menu = UI.menu("Tools")
-  input_menu = menu.add_item("Generate Rail Core") {
 
-    # All the prompts, defaults and lists for the input window
-    prompts = ["Raul: Name",
-               "Rail: Type",
-               "Rail: Length",
-               "Rail: Width",
-               "Rail: Thickness",
-               "Rail: Overhang",
-               "Rail: Color",
-               "Support: Diameter",
-               "Support: Height",
-               "Support: Feet Width",
-               "Support: Density",
-               "Support: Color",
-               "Skirting: Distance From Snow",
-               "Skirting: Width",
-               "Skirting: Color"]
 
-    defaults = ["New Rail", "Bar", "15", "5", "2", "6", "1", "3", "2", "1", "1", "1", "8", "1","1"]
+  # Debuggable instance: Ignore
+  def self.test_method
 
-    list = ["", "Tube|Bar|Double Barrel", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    UI.messagebox("Test Method called")
 
-    # Create input window
-    input = UI.inputbox(prompts, defaults, list, "Park Tools Rail Generator")
+  end
 
-    create_rail(*input)
-    rail = Rails.new
-    rail.hello
-  }
 
-  # Main function that creates rails in the ParkTools toolkit
-  # TODO break create_rail into seperate functions to improve devlopment
-  def create_rail (n, t, l, w, h, o, c, d, h2, s, d2, c2, h3, w2, c3)
+
+  # Rail generator, call create_rail and pass in a 15 item array or manually enter 15 params
+  def self.create_rail (n, t, l, w, h, o, c, d, h2, s, d2, c2, h3, w2, c3)
 
     # Intialize entities for manipulation
     model = Sketchup.active_model
+
+
 
     # Convert inputbox's output array into usable variables
     r_name       = n.to_s
@@ -57,31 +38,42 @@ module ParkTools
     k_width      = w2.to_f #* 12
     k_color      = c3.to_f #* 12
 
+
+
+    # Start operation to prevent breaking SU's native undo command
     model.start_operation('Generate Rail')
 
-    create_surface(model, r_width, s_height, r_length)
-    create_supports(model, r_width, s_diameter, r_length, r_over, s_density, s_height)
-    create_skirting(model, r_width, k_width, r_length, s_diameter, r_over, s_density, k_height, s_height)
 
+
+    # Creates surface, supports and skirting
+    _create_surface(model, r_type, r_width, s_height, r_length, r_height)
+    _create_supports(model, r_width, s_diameter, r_length, r_over, s_density, s_height)
+    _create_skirting(model, r_width, k_width, r_length, s_diameter, r_over, s_density, k_height, s_height)
     model.commit_operation
-
-    # Turn on for debug or creation conformation
-    #UI.messagebox(r_name + " Created")
 
   end
 
-  def create_surface (model, r_width, s_height, r_length)
+
+
+  # Creates grindable surface, DO NOT CALL METHOD INDIVIDUALLY
+  def self._create_surface (model, r_type, r_width, s_height, r_length, r_height)
+
+
+    # Generates a sliding surface if tube is chosen
     if r_type == "Tube"
 
+      # groups entities in this conditional
       entities = model.active_entities
       group = entities.add_group
       rail_surface = group.entities
 
+      # Sets radius, center point of tube, and orientation of tube
       radius = r_width / 2
       center_point = Geom::Point3d.new(radius,0,s_height)
       circle_orientation = Geom::Vector3d.new(0,1,0)
 
-      circle_perimeter = entities.add_circle center_point, circle_orientation, radius
+      #
+      circle_perimeter = rail_surface.add_circle center_point, circle_orientation, radius
       circle = circle_perimeter[0]
       tube_face = circle.curve
 
@@ -90,7 +82,9 @@ module ParkTools
 
       entities = group.entities
 
-    end
+    end # if condition
+
+
 
     # Generate sliding surface if bar is chosen
     if r_type == "Bar"
@@ -109,18 +103,21 @@ module ParkTools
 
       entities = group.entities
 
-    end
+    end # if condition
+
+
 
     # Generate sliding surface if bar is chosen
     #TODO implement Double Barrel rail
     if r_type == "Double Barrel"
+
       location = 0
+
       for barrel in 1..2
 
         radius = r_width / 2
         center_point = Geom::Point3d.new(radius + location,0,s_height)
         circle_orientation = Geom::Vector3d.new(0,1,0)
-
         circle_perimeter = entities.add_circle center_point, circle_orientation, radius
         circle = circle_perimeter[0]
         tube_face = circle.curve
@@ -130,18 +127,23 @@ module ParkTools
 
         location += radius
 
-      end
-    end
+      end # for loop
 
-  end
+    end # if condition
 
-  def create_supports (model, r_width, s_diameter, r_length, r_over, s_density, s_height)
 
+  end # _create_surface
+
+
+
+  # Creates rail supports, DO NOT CALL METHOD INDIVIDUALLY
+  def self._create_supports (model, r_width, s_diameter, r_length, r_over, s_density, s_height)
+
+
+    # Use for grouping
     entities = model.active_entities
     group = entities.add_group
-    rail_surface = group.entities
-
-    # Generate supports
+    rail_supports = group.entities
 
     # How far the outer edges of the support are from the outer edges of the surface
     support_in = (r_width - s_diameter) / 2
@@ -162,7 +164,7 @@ module ParkTools
       pt4 = [support_in + s_diameter, r_over + current_gap, 0]
 
       # Creates and extrudes supports from x, y coord cloud
-      support = rail_surface.add_face pt1, pt2, pt3, pt4
+      support = rail_supports.add_face pt1, pt2, pt3, pt4
       support.pushpull -s_height
 
       entities = group.entities
@@ -170,15 +172,20 @@ module ParkTools
       # Adds a gap so the next support is further down the rail
       current_gap += support_gap
 
-    end
+    end # for loop
 
-  end
 
-  def create_skirting (model, r_width, k_width, r_length, s_diameter, r_over, s_density, k_height, s_height)
+  end # _create_supports
+
+
+
+  # Creates rail skirting, DO NOT CALL METHOD INDIVIDUALLY
+  def self._create_skirting (model, r_width, k_width, r_length, s_diameter, r_over, s_density, k_height, s_height)
+
 
     entities = model.active_entities
     group = entities.add_group
-    rail_surface = group.entities
+    rail_skirting = group.entities
 
     # Generate Skirting
 
@@ -200,7 +207,7 @@ module ParkTools
       pt4 = [skirting_in + k_width, skirting_start, k_height]
 
       # Creates and extrudes skirting from x, y coord cloud
-      skirting = rail_surface.add_face pt1, pt2, pt3, pt4
+      skirting = rail_skirting.add_face pt1, pt2, pt3, pt4
       skirting.pushpull -(s_height - k_height)
 
       entities = group.entities
@@ -208,8 +215,11 @@ module ParkTools
       # Increases distange from origin so that skirting is located properly
       skirting_start += skirting_span + s_diameter
 
-    end
+    end # for loop
 
-  end
+
+  end # _create_skirting
+
+
 
 end # ParkTools Module
