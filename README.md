@@ -4,7 +4,7 @@ A rail creating plugin for Sketchup designed for terrain park designers
 
 # Instalation
 
-This plugin is very easy to install and run, simply download this project as a .zip file and unzip the contents into your SketchUp Plugins directory. Than restart Sketchup and everything should work!
+Unpack the zip file and move the "ParkTools" directory and the "ParkTools.rb" file into your sketchup plugins directory
 
 ### Know Issues
 
