@@ -1,11 +1,12 @@
 # Handles user interactions; menus, toolbars, ect
 
 require 'ParkTools/function.rb'
+require 'ParkTools/core'
 require 'ParkTools/rails'
 
 # Dialog dependencies
-require 'ParkTools/_ptui/dialogs/test_dialog'
-require 'ParkTools/_ptui/dialogs/generate_rail_dialog'
+require 'ParkTools/_ptui/test_dialog'
+require 'ParkTools/_ptui/show_generate_rail_dialog'
 
 module ParkTools
 
@@ -51,10 +52,21 @@ module ParkTools
     generate_rail_input
 
   }
-  generate_rail_command.small_icon = "GenRailSmall.png"
-  generate_rail_command.large_icon = "GenRailLarge.png.png"
+  generate_rail_command.small_icon = "/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_icons/GenRailSmall.png"
+  generate_rail_command.large_icon = "/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_icons/GenRailLarge.png"
   toolbar = toolbar.add_item generate_rail_command
   toolbar.show
   puts generate_rail_command.small_icon
+
+  test_web_ui = UI::Command.new("Generate Rail") {
+
+    show_generate_rail_dialog
+
+  }
+  test_web_ui.small_icon = "/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_icons/TestSmall.png"
+  test_web_ui.large_icon = "/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_icons/TestLarge.png"
+  toolbar = toolbar.add_item test_web_ui
+  toolbar.show
+  puts test_web_ui.small_icon
 
 end # ParkTools Module

@@ -1,3 +1,12 @@
+/*
+ * RubyGrid CSS StyleSheet for Sketchup WebDialog Boxes
+ *
+ * This module creates a responsive style optimized for
+ * Sketchup's WebUI dialog boxes
+ *
+ * :P
+ */
+
 .block {
     width : 100%;
     max-width : 800px;
@@ -34,3 +43,4 @@
     width : 100%
 }
 
+/**/
