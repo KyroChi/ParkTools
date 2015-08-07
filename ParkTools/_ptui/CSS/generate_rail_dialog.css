@@ -1,19 +1,21 @@
-h3 {
-    margin: auto;
-    text-align: center;
+.heading {
+    float: left;
 }
 
-h5 {
-    margin: auto;
-    text-align: center;
+p {
+    display: inline
 }
 
-h6 {
-    margin: auto;
-    text-align: center;
+.input_field {
+    float: right;
 }
 
 .input {
-    width: 60px;
-    margin: auto;
+    vertical-align: middle;
+    padding: 5px 100px 5px 5px;
+    text-align: right;
+}
+
+.selector {
+    width: 130px
 }

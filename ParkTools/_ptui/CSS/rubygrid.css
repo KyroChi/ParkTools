@@ -7,6 +7,12 @@
  * :P
  */
 
+html, body {
+    background-color: #ededed;
+    margin: 0;
+    padding: 0;
+}
+
 .block {
     width : 100%;
     max-width : 800px;
@@ -28,7 +34,7 @@
     float : left;
     min-height : 1px;
     width : 16.66%;
-    padding : 12px;
+    padding : 0px;
 }
 
 .col-third {
@@ -41,6 +47,19 @@
 
 .col-full {
     width : 100%
+}
+
+.divider {
+    width: 100%;
+    background-color: #d5d5d5;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    padding: 0 5px 0 5px;
+    font: small-caption;
 }
 
 /**/

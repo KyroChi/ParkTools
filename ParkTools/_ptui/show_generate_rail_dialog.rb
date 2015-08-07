@@ -1,14 +1,15 @@
+# HTML Generate Rail dialog box
 
 module ParkTools
 
 
   def self.show_generate_rail_dialog
 
-    width = 400
+    width = 380
     height = 500
 
-    dialog = UI::WebDialog.new("Generate Rails", false,
-                               "Generate Rails", width, height, 250, 150, false);
+    dialog = UI::WebDialog.new("Generate Rail", false,
+                               "Generate Rail", width, height, 250, 150, false);
 
     # Set up min and max params
     dialog.min_width = width
@@ -17,7 +18,10 @@ module ParkTools
     dialog.max_height = height
 
     dialog.set_file('/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_ptui/HTML_dialogs/show_generate_rail_dialog.html')
-    dialog.show
+    dialog.show_modal
+
+    @html_value = dialog.get_element_value("rail_name_test")
+    #dialog.set_on_close
 
   end # end show_generate_rail_dialog
 

@@ -5,18 +5,48 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/rubygrid.css">
     <link rel="stylesheet" type="text/css" href="../CSS/generate_rail_dialog.css">
+    <script src="../JS/show_generate_rail_dialog.js"></script>
 </head>
 
+<html>
 <body>
 <div class="block">
+
     <div class="row">
 
     </div>
 
     <div class="row">
 
-        <div class="col-full blue">
-            <h5>Generate Rail</h5>
+        <div class="col-full red">
+            <p class="heading">Rail Attributes</p>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-full divider">
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-full input">
+            <form>
+                <p>Rail Name:</p><input type="text" class="selector" id="rail_name_test"/><br>
+                <p>Rail Type:</p><select class="selector">
+                                    <option value="Tube">Tube</option>
+                                    <option value="Bar">Bar</option>
+                                </select><br>
+                <p>Rail Length:</p><input type="text" class="selector"/><br>
+                <p>Rail Width:</p><input type="text" class="selector"/><br>
+                <p>Rail Thickness:</p><input type="text" class="selector"/><br>
+                <p>Rail Overhang:</p><input type="text" class="selector"/><br>
+                <p>Rail Color:</p><input type="text" class="selector"/><br>
+            </form>
         </div>
 
     </div>
@@ -24,21 +54,27 @@
     <div class="row">
 
         <div class="col-full red">
-            <h3>Rail Attributes</h3>
+            <p class="heading">Support Attributes</p>
         </div>
 
     </div>
 
     <div class="row">
 
-        <div class="col-half red">
-            <h6>Name</h6>
-            <p>The name of this rail</p>
+        <div class="col-full divider">
+
         </div>
 
-        <div class="col-half blue">
-            <form class="input">
-                <input type="text" name="rail_name"><br>
+    </div>
+
+    <div class="row">
+
+        <div class="col-full input">
+            <form>
+                <p>Support Diameter:</p><input type="text" class="selector"/><br>
+                <p>Support Height:</p><input type="text" class="selector"/><br>
+                <p>Support Density:</p><input type="text" class="selector"/><br>
+                <p>Support Color:</p><input type="text" class="selector"/><br>
             </form>
         </div>
 
@@ -46,52 +82,51 @@
 
     <div class="row">
 
-        <div class="col-half red">
-            <h6>Type</h6>
-            <p>The type of rail to create</p>
-        </div>
-
-        <div class="col-half blue">
-            <form class="input">
-                <select name="rail_type">
-                    <option value="Tube">Tube</option>
-                    <option value="Bar">Bar</option>
-                </select>
-            </form>
+        <div class="col-full red">
+            <p class="heading">Skirting Attributes</p>
         </div>
 
     </div>
 
     <div class="row">
 
-        <div class="col-half red">
-            <h6>Length</h6>
-            <p>How long will the rail be</p>
-        </div>
+        <div class="col-full divider">
 
-        <div class="col-half blue">
-            <form class="input">
-                <input type="text" name="rail_length"><br>
-            </form>
         </div>
 
     </div>
 
     <div class="row">
 
-        <div class="col-half red">
-            <h6>Width</h6>
-            <p>How wide will this rail be</p>
-        </div>
-
-        <div class="col-half blue">
-            <form class="input">
-                <input type="text" name="rail_width"><br>
+        <div class="col-full input">
+            <form>
+                <p>Skirting Height:</p><input type="text" class="selector"/><br>
+                <p>Skirting Thickness:</p><input type="text" class="selector"/><br>
+                <p>Skirting Color:</p><input type="text" class="selector"/><br>
             </form>
         </div>
 
     </div>
 
+    <div class="row">
+        <button>Generate</button>
+    </div>
+
+    <p id="rail_name"           class="hidden"></p>
+    <p id="rail_type"           class="hidden"></p>
+    <p id="rail_length"         class="hidden"></p>
+    <p id="rail_width"          class="hidden"></p>
+    <p id="rail_thickness"      class="hidden"></p>
+    <p id="rail_overhang"       class="hidden"></p>
+    <p id="rail_color"          class="hidden"></p>
+    <p id="support_diameter"    class="hidden"></p>
+    <p id="support_height"      class="hidden"></p>
+    <p id="support_feet_width"  class="hidden"></p>
+    <p id="support_density"     class="hidden"></p>
+    <p id="support_color"       class="hidden"></p>
+    <p id="skirting_height"     class="hidden"></p>
+    <p id="skirting_width"      class="hidden"></p>
+    <p id="skirting_color"      class="hidden"></p>
 
 </div>
 </body>
