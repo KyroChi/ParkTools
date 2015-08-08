@@ -9,7 +9,7 @@
 </head>
 
 <html>
-<body>
+<body onload="sample_function()">
 <div class="block">
 
     <div class="row">
@@ -35,17 +35,17 @@
     <div class="row">
 
         <div class="col-full input">
-            <form>
-                <p>Rail Name:</p><input type="text" class="selector" id="rail_name_test"/><br>
+            <input>
+                <p>Rail Name:</p><input type="text" class="selector" value="New Rail" id="r_name"/><br>
                 <p>Rail Type:</p><select class="selector">
                                     <option value="Tube">Tube</option>
                                     <option value="Bar">Bar</option>
                                 </select><br>
-                <p>Rail Length:</p><input type="text" class="selector"/><br>
-                <p>Rail Width:</p><input type="text" class="selector"/><br>
-                <p>Rail Thickness:</p><input type="text" class="selector"/><br>
-                <p>Rail Overhang:</p><input type="text" class="selector"/><br>
-                <p>Rail Color:</p><input type="text" class="selector"/><br>
+                <p>Rail Length:</p><input type="text" class="selector_1" id="r_length_1" value="" onchange="updateDOMSlide(this.value)"/><input type="range" min="5" max="100" step="5" class="selector_2 r_length" id='r_length_2' onchange="updateTextInput(this.value)"/><br>
+                <p>Rail Width:</p><input type="range" min="1" max="18" step=".25" class="selector" value="5" id="r_width"/><br>
+                <p>Rail Thickness:</p><input type="range" min=".5" max="12" step=".25" class="selector" value="2" id="r_thickness"/><br>
+                <p>Rail Overhang:</p><input type="range" min="0" max="24" step=".25" class="selector" value="6" id="r_overhang"/><br>
+                <p>Rail Color:</p><input type="text" class="selector" id="r_color"/><br>
             </form>
         </div>
 
@@ -109,24 +109,8 @@
     </div>
 
     <div class="row">
-        <button>Generate</button>
+        <button onclick="sample_function()">Generate</button>
     </div>
-
-    <p id="rail_name"           class="hidden"></p>
-    <p id="rail_type"           class="hidden"></p>
-    <p id="rail_length"         class="hidden"></p>
-    <p id="rail_width"          class="hidden"></p>
-    <p id="rail_thickness"      class="hidden"></p>
-    <p id="rail_overhang"       class="hidden"></p>
-    <p id="rail_color"          class="hidden"></p>
-    <p id="support_diameter"    class="hidden"></p>
-    <p id="support_height"      class="hidden"></p>
-    <p id="support_feet_width"  class="hidden"></p>
-    <p id="support_density"     class="hidden"></p>
-    <p id="support_color"       class="hidden"></p>
-    <p id="skirting_height"     class="hidden"></p>
-    <p id="skirting_width"      class="hidden"></p>
-    <p id="skirting_color"      class="hidden"></p>
 
 </div>
 </body>

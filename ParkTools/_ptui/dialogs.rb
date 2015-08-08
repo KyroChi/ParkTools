@@ -20,7 +20,7 @@ module ParkTools
     dialog.set_file('/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_ptui/HTML_dialogs/show_generate_rail_dialog.html')
     dialog.show_modal
 
-    @html_value = dialog.get_element_value("rail_name_test")
+    @html_value = dialog.get_element_value("rail_name")
     #dialog.set_on_close
 
   end # end show_generate_rail_dialog
