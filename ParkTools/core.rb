@@ -6,14 +6,21 @@ require 'ParkTools/rails'
 
 # Dialog dependencies
 require 'ParkTools/_ptui/test_dialog'
-require 'ParkTools/_ptui/show_generate_rail_dialog'
+require 'ParkTools/_ptui/dialogs'
 
 module ParkTools
 
-  # Create ParkTools menu in Tools > ParkTools
+  # Create a Tools > ParkTools menu ----------------------------
+
   menu = UI.menu("Tools")
   menu.add_separator
   sub_menu = menu.add_submenu("Park Tools")
+
+  # ------------------------------------------------------------
+
+
+
+  # Tools > ParkTools > Generate Rail Core ---------------------
 
   input_menu = sub_menu.add_item("Generate Rail Core") {
 
@@ -21,17 +28,35 @@ module ParkTools
 
   }
 
+  # ------------------------------------------------------------
+
+
+
+  # Tools > ParkTools > Test -----------------------------------
+
   test_menu = sub_menu.add_item("Test") {
 
+    UI.messagebox(@test_var)
     test_method
 
   }
+  # ------------------------------------------------------------
+
+
+
+  # Tools > ParkTools > WebUI ----------------------------------
 
   test_web = sub_menu.add_item("WebUI") {
 
     show_generate_rail_dialog
 
   }
+
+  # ------------------------------------------------------------
+
+
+
+  # Tools > ParkTools > Inspector Inputs -----------------------
 
   inspectors = sub_menu.add_item("Inspector Inputs") {
 
@@ -41,11 +66,22 @@ module ParkTools
     input = UI.inputbox(prompts, defaults, 'Color Changer')
 
     UI.show_inspector "Materials"
+
   }
 
+  # ------------------------------------------------------------
 
-  # Create ParkTools Toolbar
+
+
+  # Create ParkTools Toolbar -----------------------------------
+
   toolbar = UI::Toolbar.new "ParkTools"
+
+  # ------------------------------------------------------------
+
+
+
+  # ToolBar Generate Rail Command ------------------------------
 
   generate_rail_command = UI::Command.new("Generate Rail") {
 
@@ -55,10 +91,16 @@ module ParkTools
   generate_rail_command.small_icon = "/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_icons/GenRailSmall.png"
   generate_rail_command.large_icon = "/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_icons/GenRailLarge.png"
   toolbar = toolbar.add_item generate_rail_command
-  toolbar.show
   puts generate_rail_command.small_icon
+  toolbar.show
 
-  test_web_ui = UI::Command.new("Generate Rail") {
+  # ------------------------------------------------------------
+
+
+
+  # ToolBar Generate Rail webui --------------------------------
+
+  test_web_ui = UI::Command.new("webui") {
 
     show_generate_rail_dialog
 
@@ -66,7 +108,9 @@ module ParkTools
   test_web_ui.small_icon = "/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_icons/TestSmall.png"
   test_web_ui.large_icon = "/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_icons/TestLarge.png"
   toolbar = toolbar.add_item test_web_ui
-  toolbar.show
   puts test_web_ui.small_icon
+  toolbar.show
+
+  # ------------------------------------------------------------
 
 end # ParkTools Module

@@ -24,9 +24,37 @@ module ParkTools
                "Skirting: Width",
                "Skirting: Color"]
 
-    defaults = ["New Rail", "Bar", "15", "5", "2", "6", "1", "3", "2", "1", "1", "1", "8", "1","1"]
+    defaults = ["New Rail",
+                "Bar",
+                "15",
+                "5",
+                "2",
+                "6",
+                "1",
+                "3",
+                "2",
+                "1",
+                "1",
+                "1",
+                "8",
+                "1",
+                "1"]
 
-    list = ["", "Tube|Bar|Double Barrel", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    list = ["",
+            "Tube|Bar|Double Barrel",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""]
 
     # Create input window
     input = UI.inputbox(prompts, defaults, list, "Park Tools Rail Generator")
