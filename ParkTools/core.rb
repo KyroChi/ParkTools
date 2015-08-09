@@ -32,40 +32,11 @@ module ParkTools
 
 
 
-  # Tools > ParkTools > Test -----------------------------------
-
-  test_menu = sub_menu.add_item("Test") {
-
-    UI.messagebox(@test_var)
-    test_method
-
-  }
-  # ------------------------------------------------------------
-
-
-
   # Tools > ParkTools > WebUI ----------------------------------
 
   test_web = sub_menu.add_item("WebUI") {
 
     show_generate_rail_dialog
-
-  }
-
-  # ------------------------------------------------------------
-
-
-
-  # Tools > ParkTools > Inspector Inputs -----------------------
-
-  inspectors = sub_menu.add_item("Inspector Inputs") {
-
-    prompts = ["Color"]
-    defaults = [""]
-
-    input = UI.inputbox(prompts, defaults, 'Color Changer')
-
-    UI.show_inspector "Materials"
 
   }
 
