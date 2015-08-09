@@ -1,6 +1,6 @@
 # HTML Generate Rail dialog box
 
-require 'ParkTools/rails'
+require 'ParkTools/function'
 
 module ParkTools
 

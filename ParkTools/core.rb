@@ -2,7 +2,6 @@
 
 require 'ParkTools/function.rb'
 require 'ParkTools/core'
-require 'ParkTools/rails'
 
 # Dialog dependencies
 require 'ParkTools/_ptui/test_dialog'
