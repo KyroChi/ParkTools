@@ -4,15 +4,6 @@ module ParkTools
 
 
 
-  # Debuggable instance: Ignore
-  def self.test_method
-
-    UI.messagebox("Test Method called")
-
-  end
-
-
-
   # Rail generator, call create_rail and pass in a 15 item array or manually enter 15 params
   def self.create_rail (n, t, l, w, h, o, c, d, h2, s, d2, c2, h3, w2, c3)
 
