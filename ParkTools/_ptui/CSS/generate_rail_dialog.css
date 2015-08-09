@@ -12,18 +12,24 @@ p {
 
 .input {
     vertical-align: middle;
-    padding: 5px 100px 5px 5px;
+    padding: 5px 20px 5px 5px;
     text-align: right;
 }
 
 .selector {
-    width: 130px
+    width: 180px
 }
 
 .selector_1 {
-    width: 30px;
+    width: 50px;
 }
 
 .selector_2 {
+    width: 120px;
+}
+
+.center {
+    display: block;
     width: 100px;
+    margin: auto;
 }

@@ -5,6 +5,23 @@ require'ParkTools/rails.rb'
 module ParkTools
 
 
+  @defaults = ["New Rail",
+               "Bar",
+               "15",
+               "5",
+               "2",
+               "6",
+               "1",
+               "3",
+               "2",
+               "1",
+               "1",
+               "1",
+               "8",
+               "1",
+               "1"]
+
+
   # UI command to access the generate rail prompt
   def self.generate_rail_input
 
@@ -24,21 +41,7 @@ module ParkTools
                "Skirting: Width",
                "Skirting: Color"]
 
-    defaults = ["New Rail",
-                "Bar",
-                "15",
-                "5",
-                "2",
-                "6",
-                "1",
-                "3",
-                "2",
-                "1",
-                "1",
-                "1",
-                "8",
-                "1",
-                "1"]
+    defaults = @defaults
 
     list = ["",
             "Tube|Bar|Double Barrel",
@@ -60,6 +63,11 @@ module ParkTools
     input = UI.inputbox(prompts, defaults, list, "Park Tools Rail Generator")
 
     create_rail(*input)
+
+  end
+
+
+  def self.parktools_settings
 
   end
 

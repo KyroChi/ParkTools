@@ -62,4 +62,8 @@ p {
     font: small-caption;
 }
 
+.hidden {
+    display: none;
+}
+
 /**/
