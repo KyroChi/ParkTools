@@ -19,4 +19,3 @@ Unpack the zip file and move the "ParkTools" directory and the "ParkTools.rb" fi
 * Add support for C and S rails
 * Add support for snow pads
 * Add support for jump lines
-* Improve Rail generator UI
