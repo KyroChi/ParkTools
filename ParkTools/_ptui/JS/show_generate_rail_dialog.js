@@ -5,6 +5,12 @@ function updateValue(val, selector) {
 
 }
 
+function closeWindow() {
+
+    window.close();
+
+}
+
 /* sets all the variables that are needed to create a rail */
 var rail_name;
 var rail_type;

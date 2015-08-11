@@ -11,7 +11,7 @@ module ParkTools
     height = 500
 
     dialog = UI::WebDialog.new("Generate Rail", false,
-                               "Generate Rail", width, height, 250, 150, false);
+                               "Generate Rail", width, height, 250, 150, false)
 
     # Set up min and max params
     dialog.min_width = width
@@ -48,11 +48,13 @@ module ParkTools
                      rail_thickness,
                      rail_overhang,
                      rail_color,
+
                      support_width,
                      support_height,
                      6,
                      support_density,
                      support_color,
+
                      skirting_height,
                      skirting_thickness,
                      skirting_color]

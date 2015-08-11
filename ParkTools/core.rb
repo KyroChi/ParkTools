@@ -4,7 +4,6 @@ require 'ParkTools/function.rb'
 require 'ParkTools/core'
 
 # Dialog dependencies
-require 'ParkTools/_ptui/test_dialog'
 require 'ParkTools/_ptui/dialogs'
 
 module ParkTools
@@ -21,7 +20,7 @@ module ParkTools
 
   # Tools > ParkTools > Generate Rail Core ---------------------
 
-  input_menu = sub_menu.add_item("Generate Rail Core") {
+  input_menu = sub_menu.add_item("Simple Rail Generator") {
 
     generate_rail_input
 
@@ -33,7 +32,7 @@ module ParkTools
 
   # Tools > ParkTools > WebUI ----------------------------------
 
-  test_web = sub_menu.add_item("WebUI") {
+  test_web = sub_menu.add_item("Rail Generator") {
 
     show_generate_rail_dialog
 
