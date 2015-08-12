@@ -19,7 +19,7 @@ module ParkTools
     dialog.max_width = width
     dialog.max_height = height
 
-    dialog.set_file('/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_ptui/HTML_dialogs/show_generate_rail_dialog.html')
+    dialog.set_file('/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_ptui/HTML_dialogs/generate_rail_dialog.html')
     dialog.show_modal
 
     dialog.set_on_close {
@@ -64,6 +64,27 @@ module ParkTools
     }
 
   end # end show_generate_rail_dialog
+
+
+
+  def self.show_settings_dialog
+
+    width = 380
+    height = 500
+
+    dialog = UI::WebDialog.new("Settings", false,
+                               "Settings", width, height, 250, 150, false)
+
+    # Set up min and max params
+    dialog.min_width = width
+    dialog.min_height = height
+    dialog.max_width = width
+    dialog.max_height = height
+
+    dialog.set_file('')
+    dialog.show_modal
+
+  end # end show_settings_dialog
 
 
 end # end ParkTools

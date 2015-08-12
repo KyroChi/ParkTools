@@ -68,6 +68,42 @@ module ParkTools
 
   def self.parktools_settings
 
+    prompts = ["Rail: Name",
+               "Rail: Type",
+               "Rail: Length",
+               "Rail: Width",
+               "Rail: Thickness",
+               "Rail: Overhang",
+               "Rail: Color",
+               "Support: Diameter",
+               "Support: Height",
+               "Support: Feet Width",
+               "Support: Density",
+               "Support: Color",
+               "Skirting: Distance From Snow",
+               "Skirting: Width",
+               "Skirting: Color"]
+
+    defaults = @defaults
+
+    list = ["",
+            "Tube|Bar|Double Barrel",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""]
+
+    @defaults = UI.inputbox(prompts, defaults, list, "Park Tools Rail Generator")
+
   end
 
 

@@ -5,12 +5,6 @@ function updateValue(val, selector) {
 
 }
 
-function closeWindow() {
-
-    window.close();
-
-}
-
 /* sets all the variables that are needed to create a rail */
 var rail_name;
 var rail_type;
@@ -75,5 +69,22 @@ function getValues() {
 
     skirting_color = document.getElementById( "k_color" ).value;
     document.getElementById( "ruby_skirting_color" ).value = skirting_color;
+
+}
+
+/* Sets the max value given an input's value */
+function max(getValueOf, setValueOf) {
+
+    getMaxValue = document.getElementById( getValueOf ).value;
+
+    setMaxValue = document.getElementById( setValueOf );
+    setMaxValue.setAttribute("max", getMaxValue);
+
+}
+
+function railWidth(val, selector, getValue, setValue) {
+
+    updateValue(val, selector);
+    max(getValue, setValue);
 
 }
