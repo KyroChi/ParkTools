@@ -30,6 +30,18 @@ module ParkTools
 
 
 
+  # Tools > ParkTools > Generate Rail Core ---------------------
+
+  test_input_menu = sub_menu.add_item("Test Rail Generator") {
+
+    generate_rail_input
+
+  }
+
+  # ------------------------------------------------------------
+
+
+
   # Tools > ParkTools > WebUI ----------------------------------
 
   test_web = sub_menu.add_item("Rail Generator") {
@@ -44,7 +56,7 @@ module ParkTools
 
   # Tools > ParkTools > Rail Generator Settings ----------------
 
-  test_web = sub_menu.add_item("Rail Generator Settings") {
+  rail_generator_settings = sub_menu.add_item("Rail Generator Settings") {
 
     parktools_settings
 

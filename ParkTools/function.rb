@@ -106,15 +106,13 @@ module ParkTools
 
   end
 
-
-
   # Rail generator, call create_rail and pass in a 15 item array or manually enter 15 params
-  def self.create_rail (n, t, l, w, h, o, c, d, h2, s, d2, c2, h3, w2, c3)
+  def self.new_create_rail (n, t, l, w, h, o, c, d, h2, s, d2, c2, h3, w2, c3)
 
     # Intialize entities for manipulation
     model = Sketchup.active_model
-
-
+    entities = model.active_entities
+    group = entities.add_group
 
     # Convert inputbox's output array into usable variables
     r_name       = n.to_s
@@ -133,33 +131,12 @@ module ParkTools
     k_width      = w2.to_f #* 12
     k_color      = c3.to_f #* 12
 
-
-
-    # Start operation to prevent breaking SU's native undo command
     model.start_operation('Generate Rail')
-
-
-
-    # Creates surface, supports and skirting
-    _create_surface(model, r_type, r_width, s_height, r_length, r_height)
-    _create_supports(model, r_width, s_diameter, r_length, r_over, s_density, s_height)
-    _create_skirting(model, r_width, k_width, r_length, s_diameter, r_over, s_density, k_height, s_height)
-    model.commit_operation
-
-  end
-
-
-
-  # Creates grindable surface, DO NOT CALL METHOD INDIVIDUALLY
-  def self._create_surface (model, r_type, r_width, s_height, r_length, r_height)
-
 
     # Generates a sliding surface if tube is chosen
     if r_type == "Tube"
 
       # groups entities in this conditional
-      entities = model.active_entities
-      group = entities.add_group
       rail_surface = group.entities
 
       # Sets radius, center point of tube, and orientation of tube
@@ -179,13 +156,9 @@ module ParkTools
 
     end # if condition
 
-
-
     # Generate sliding surface if bar is chosen
     if r_type == "Bar"
 
-      entities = model.active_entities
-      group = entities.add_group
       rail_surface = group.entities
 
       pt1 = [0, 0, s_height]
@@ -199,8 +172,6 @@ module ParkTools
       entities = group.entities
 
     end # if condition
-
-
 
     # Generate sliding surface if bar is chosen
     #TODO implement Double Barrel rail
@@ -226,18 +197,7 @@ module ParkTools
 
     end # if condition
 
-
-  end # _create_surface
-
-
-
-  # Creates rail supports, DO NOT CALL METHOD INDIVIDUALLY
-  def self._create_supports (model, r_width, s_diameter, r_length, r_over, s_density, s_height)
-
-
     # Use for grouping
-    entities = model.active_entities
-    group = entities.add_group
     rail_supports = group.entities
 
     # How far the outer edges of the support are from the outer edges of the surface
@@ -269,17 +229,6 @@ module ParkTools
 
     end # for loop
 
-
-  end # _create_supports
-
-
-
-  # Creates rail skirting, DO NOT CALL METHOD INDIVIDUALLY
-  def self._create_skirting (model, r_width, k_width, r_length, s_diameter, r_over, s_density, k_height, s_height)
-
-
-    entities = model.active_entities
-    group = entities.add_group
     rail_skirting = group.entities
 
     # Generate Skirting
@@ -312,8 +261,9 @@ module ParkTools
 
     end # for loop
 
+    model.commit_operation
 
-  end # _create_skirting
+  end # create_rail
 
 
 
