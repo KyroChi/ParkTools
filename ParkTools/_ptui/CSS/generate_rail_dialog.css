@@ -33,3 +33,7 @@ p {
     width: 100px;
     margin: auto;
 }
+
+.rail_property {
+    visibility: hidden;
+}

@@ -59,7 +59,7 @@ module ParkTools
                      skirting_thickness,
                      skirting_color]
 
-      new_create_rail(*rail_inputs)
+      create_rail(*rail_inputs)
 
     }
 
