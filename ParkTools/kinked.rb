@@ -27,7 +27,7 @@ module ParkTools
 
     support_width = support_width
     support_height = support_height
-    
+
     skirting_thickness = skirting_thickness
     skirting_height = skirting_height
 

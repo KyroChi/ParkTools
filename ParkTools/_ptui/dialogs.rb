@@ -87,4 +87,25 @@ module ParkTools
   end # end show_settings_dialog
 
 
+
+  def self.show_kink_rail_test
+
+    width = 380
+    height = 500
+
+    dialog = UI::WebDialog.new("Settings", false,
+                               "Settings", width, height, 250, 150, false)
+
+    # Set up min and max params
+    dialog.min_width = width
+    dialog.min_height = height
+    dialog.max_width = width
+    dialog.max_height = height
+
+    dialog.set_file('')
+    dialog.show_modal
+
+  end # end show_kink_rail_test
+
+
 end # end ParkTools
