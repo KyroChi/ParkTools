@@ -111,6 +111,11 @@ module ParkTools
 
     # Intialize entities for manipulation
     model = Sketchup.active_model
+
+    materials = model.materials
+    color = materials.add('rail_color')
+    color.color = 'red'
+
     entities = model.active_entities
     group = entities.add_group
 

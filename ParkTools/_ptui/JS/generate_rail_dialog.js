@@ -88,9 +88,3 @@ function railWidth(val, selector, getValue, setValue) {
     max(getValue, setValue);
 
 }
-
-function dropDown() {
-
-    document.getElementsByClassName("rail_property").syle.visibility = "visiable";
-
-}
