@@ -1,10 +1,6 @@
 # ParkTools
 
-A rail creating plugin for Sketchup designed for terrain park designers
-
-# Instalation
-
-Unpack the zip file and move the "ParkTools" directory and the "ParkTools.rb" file into your sketchup plugins directory
+A rail creating plugin for Sketchup designed for terrain 
 
 ### Know Issues
 
