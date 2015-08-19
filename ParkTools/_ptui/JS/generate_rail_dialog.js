@@ -1,7 +1,7 @@
 /* updates slider and textbox */
-function updateValue(val, selector) {
+function updateValue(getValueID, setValueID) {
 
-    document.getElementById( selector ).value = val;
+    document.getElementById(setValueID).value = document.getElementById(getValueID).value;
 
 }
 
@@ -72,19 +72,125 @@ function getValues() {
 
 }
 
+
 /* Sets the max value given an input's value */
-function max(getValueOf, setValueOf) {
+function max(elementID) {
 
-    getMaxValue = document.getElementById( getValueOf ).value;
-
-    setMaxValue = document.getElementById( setValueOf );
-    setMaxValue.setAttribute("max", getMaxValue);
+    var element = document.getElementById(elementID);
+    return element.value;
 
 }
 
-function railWidth(val, selector, getValue, setValue) {
+/*
 
-    updateValue(val, selector);
-    max(getValue, setValue);
+These functions create various input menus
+
+_caption is the text prepended to the input box, recommended 'Caption: '
+_class is the class of the input element, for SketchupUI with dialog.css use 'selector'
+_id is the unique id of the input element, make sure that every object has a UNIQUE id
+_appendToID is the id of the HTML object that the new input box will be appended to
+
+ */
+
+// Creates a simple input text box
+// _default_value is the value that will be displayed initially in the text box
+function createInputBox(_caption, _default_value, _id, _appendToID) {
+
+    var _appendTo = document.getElementById(_appendToID);
+
+    var inputBox = document.createElement("INPUT");
+    inputBox.setAttribute('type', 'text');
+    inputBox.setAttribute('class', 'selector');
+    inputBox.setAttribute('value', _default_value);
+    inputBox.setAttribute('id', _id);
+
+    _appendTo.appendChild(addCaption(_caption));
+    _appendTo.appendChild(inputBox);
+    _appendTo.appendChild(addBreak());
+
+}
+
+
+// Creates a selection dropdown menu
+// Options is an array of options in the selection menu, for example ['selection 1', 'selection 2']
+function createSelectorMenu (_caption, _id, _options, _appendToID) {
+
+    var selectorMenu = document.createElement("SELECT");
+    selectorMenu.setAttribute('class', 'selector');
+    selectorMenu.setAttribute('id', _id);
+
+    for (var i = 0; i < _options.length; i++) {
+
+        var optionValue = document.createElement("OPTION");
+        optionValue.setAttribute('value', _options[i]);
+        optionValue.innerHTML = _options[i];
+
+        selectorMenu.appendChild(optionValue);
+
+    }
+
+    var _appendTo = document.getElementById(_appendToID);
+    _appendTo.appendChild(addCaption(_caption));
+    _appendTo.appendChild(selectorMenu);
+    _appendTo.appendChild(addBreak());
+
+}
+
+
+// Creates a input box and linked input slider
+// _maxBool specifies a scaler maximum
+// If _maxBool is false than _maxAttachElement is the maximum value
+// If _maxBool is true than _maxAttachElement is the id of the element that specifies scaler maximum
+function createInputSlider (_caption, _id, _value, _min, _maxBool, _maxElement, _step, _appendToID) {
+
+    var inputSliderInputBox = document.createElement("INPUT");
+    inputSliderInputBox.setAttribute('class', 'selector_1');
+    inputSliderInputBox.setAttribute('id', _id + '_1');
+    inputSliderInputBox.setAttribute('value', _value);
+
+    var inputSlider = document.createElement("INPUT");
+    inputSlider.setAttribute('type', 'range');
+    inputSlider.setAttribute('class', 'selector_2');
+    inputSlider.setAttribute('id', _id + '_2');
+    inputSlider.setAttribute('value', _value);
+    inputSlider.setAttribute('min', _min);
+    inputSlider.setAttribute('max', _maxElement);
+    inputSlider.setAttribute('step', _step);
+
+    // Sets scaler maximum if _maxBool is true
+    if (_maxBool) {
+
+        inputSlider.setAttribute('max', max(_maxElement));
+
+    } else {
+
+        inputSlider.setAttribute('max', _maxElement);
+
+    }
+
+    var _appendTo = document.getElementById(_appendToID);
+    _appendTo.appendChild(addCaption(_caption));
+    _appendTo.appendChild(inputSliderInputBox);
+    _appendTo.appendChild(inputSlider);
+    _appendTo.appendChild(addBreak());
+
+}
+
+
+// adds a line break to the DOM
+function addBreak() {
+
+    return document.createElement("BR");
+
+}
+
+
+// adds a caption with the caption provided
+function addCaption(caption) {
+
+    var cap = document.createElement("P");
+    cap.innerHTML = caption;
+
+    return cap;
 
 }

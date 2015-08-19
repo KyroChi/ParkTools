@@ -38,17 +38,17 @@
                                     <option value="Bar">Bar</option>
                                 </select><br>
 
-                <p>Rail Length:</p><input type="text" class="selector_1" id="r_length_1" value="15" oninput="updateValue(this.value, 'r_length_2')"/>
-                        <input type="range" min="5" max="100" step="5" class="selector_2" id='r_length_2' value="15" oninput="updateValue(this.value, 'r_length_1')"/><br>
+                <p>Rail Length:</p><input type="text" class="selector_1" id="r_length_1" value="15" oninput="updateValue(this.id, 'r_length_2')"/>
+                        <input type="range" min="5" max="100" step="5" class="selector_2" id='r_length_2' value="15" oninput="updateValue(this.id, 'r_length_1')"/><br>
 
-                <p>Rail Width:</p><input type="text" class="selector_1" id="r_width_1" value="5" oninput="updateValue(this.value, 'r_width_2')"/>
-                <input type="range" min="1" max="24" step=".25" class="selector_2" id='r_width_2' value="5" oninput="updateValue(this.value, 'r_width_1')"/><br>
+                <p>Rail Width:</p><input type="text" class="selector_1" id="r_width_1" value="5" oninput="updateValue(this.id, 'r_width_2')"/>
+                <input type="range" min="1" max="24" step=".25" class="selector_2" id='r_width_2' value="5" oninput="updateValue(this.id, 'r_width_1')"/><br>
 
-                <p>Rail Thickness:</p><input type="text" class="selector_1" id="r_thickness_1" value="2" oninput="updateValue(this.value, 'r_thickness_2')"/>
-                <input type="range" min=".5" max="12" step=".25" class="selector_2" id='r_thickness_2' value="2" oninput="updateValue(this.value, 'r_thickness_1')"/><br>
+                <p>Rail Thickness:</p><input type="text" class="selector_1" id="r_thickness_1" value="2" oninput="updateValue(this.id, 'r_thickness_2')"/>
+                <input type="range" min=".5" max="12" step=".25" class="selector_2" id='r_thickness_2' value="2" oninput="updateValue(this.id, 'r_thickness_1')"/><br>
 
-                <p>Rail Overhang:</p><input type="text" class="selector_1" id="r_overhang_1" value="6" oninput="updateValue(this.value, 'r_overhang_2')"/>
-                <input type="range" min="0" max="24" step=".25" class="selector_2" id='r_overhang_2' value="6" oninput="updateValue(this.value, 'r_overhang_1')"/><br>
+                <p>Rail Overhang:</p><input type="text" class="selector_1" id="r_overhang_1" value="6" oninput="updateValue(this.id, 'r_overhang_2')"/>
+                <input type="range" min="0" max="24" step=".25" class="selector_2" id='r_overhang_2' value="6" oninput="updateValue(this.id, 'r_overhang_1')"/><br>
 
                 <p>Rail Color:</p><input type="color" name="rail_color" class="selector" id="r_color" value="#000000"/><br>
 
@@ -71,14 +71,14 @@
         <div class="col-full input">
             <form>
 
-                <p>Support Width:</p><input type="text" class="selector_1" id="s_width_1" value="3" oninput="updateValue(this.value, 's_width_2')"/>
-                <input type="range" min="1" max="24" step=".25" class="selector_2" id='s_width_2' value="3" oninput="updateValue(this.value, 's_width_1')"/><br>
+                <p>Support Width:</p><input type="text" class="selector_1" id="s_width_1" value="3" oninput="updateValue(this.id, 's_width_2')"/>
+                <input type="range" min="1" max="24" step=".25" class="selector_2" id='s_width_2' value="3" oninput="updateValue(this.id, 's_width_1')"/><br>
 
-                <p>Support Height:</p><input type="text" class="selector_1" id="s_height_1" value="2" oninput="updateValue(this.value, 's_height_2')"/>
-                <input type="range" min=".5" max="6" step=".25" class="selector_2" id='s_height_2' value="2" oninput="updateValue(this.value, 's_height_1')"/><br>
+                <p>Support Height:</p><input type="text" class="selector_1" id="s_height_1" value="2" oninput="updateValue(this.id, 's_height_2')"/>
+                <input type="range" min=".5" max="6" step=".25" class="selector_2" id='s_height_2' value="2" oninput="updateValue(this.id, 's_height_1')"/><br>
 
-                <p>Support Density:</p><input type="text" class="selector_1" id="s_density_1" value="1" oninput="updateValue(this.value, 's_density_2')"/>
-                <input type="range" min="0" max="10" step="1" class="selector_2" id='s_density_2' value="1" oninput="updateValue(this.value, 's_density_1')"/><br>
+                <p>Support Density:</p><input type="text" class="selector_1" id="s_density_1" value="1" oninput="updateValue(this.id, 's_density_2')"/>
+                <input type="range" min="0" max="10" step="1" class="selector_2" id='s_density_2' value="1" oninput="updateValue(this.id, 's_density_1')"/><br>
 
                 <p>Support Color:</p><input type="color" name="support_color" class="selector" id="s_color" value="#000000"/><br>
 
@@ -101,11 +101,11 @@
         <div class="col-full input">
             <form>
 
-                <p>Skirting Height:</p><input type="text" class="selector_1" id="k_height_1" value="8" oninput="updateValue(this.value, 'k_height_2')"/>
-                <input type="range" min="0" max="36" step=".25" class="selector_2" id='k_height_2' value="8" oninput="updateValue(this.value, 'k_height_1')"/><br>
+                <p>Skirting Height:</p><input type="text" class="selector_1" id="k_height_1" value="8" oninput="updateValue(this.id, 'k_height_2')"/>
+                <input type="range" min="0" max="36" step=".25" class="selector_2" id='k_height_2' value="8" oninput="updateValue(this.id, 'k_height_1')"/><br>
 
-                <p>Skirting Thickness:</p><input type="text" class="selector_1" id="k_thickness_1" value=".75" oninput="updateValue(this.value, 'k_thickness_2')"/>
-                <input type="range" min=".25" max="4" step=".25" class="selector_2" id='k_thickness_2' value=".75" oninput="updateValue(this.value, 'k_thickness_1')"/><br>
+                <p>Skirting Thickness:</p><input type="text" class="selector_1" id="k_thickness_1" value=".75" oninput="updateValue(this.id, 'k_thickness_2')"/>
+                <input type="range" min=".25" max="4" step=".25" class="selector_2" id='k_thickness_2' value=".75" oninput="updateValue(this.id, 'k_thickness_1')"/><br>
 
                 <p>Skirting Color:</p><input type="color" name="skirting_color" class="selector" id="k_color" value="#000000"/><br>
 
