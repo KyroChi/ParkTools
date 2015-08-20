@@ -19,27 +19,24 @@ module ParkTools
     dialog.max_width = width
     dialog.max_height = height
 
-    dialog.set_file('/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_ptui/HTML_dialogs/generate_rail_dialog.html')
+    dialog.set_file('/Users/kyle/Library/Application Support/SketchUp 2015/SketchUp/Plugins/ParkTools/_ptui/HTML_dialogs/new_generate_rail_dialog.html')
     dialog.show_modal
 
     dialog.set_on_close {
 
-      rail_name = dialog.get_element_value( "ruby_rail_name" )
-      rail_type = dialog.get_element_value( "ruby_rail_type" )
-      rail_length = dialog.get_element_value( "ruby_rail_length" )
-      rail_width = dialog.get_element_value( "ruby_rail_width" )
-      rail_thickness = dialog.get_element_value( "ruby_rail_thickness" )
-      rail_overhang = dialog.get_element_value( "ruby_rail_overhang" )
-      rail_color = dialog.get_element_value( "ruby_rail_color" )
+      rail_name = dialog.get_element_value( "r_name_0" )
+      rail_type = dialog.get_element_value( "r_type_0" )
+      rail_length = dialog.get_element_value( "r_length_0" )
+      rail_width = dialog.get_element_value( "r_width_0" )
+      rail_thickness = dialog.get_element_value( "r_thickness_0" )
+      rail_overhang = dialog.get_element_value( "r_overhang_0" )
 
-      support_width = dialog.get_element_value( "ruby_support_width" )
-      support_height = dialog.get_element_value( "ruby_support_height" )
-      support_density = dialog.get_element_value( "ruby_support_density" )
-      support_color = dialog.get_element_value( "ruby_support_color" )
+      support_width = dialog.get_element_value( "s_width_0" )
+      support_height = dialog.get_element_value( "s_height_0" )
+      support_density = dialog.get_element_value( "s_density_0" )
 
-      skirting_height = dialog.get_element_value( "ruby_skirting_height" )
-      skirting_thickness = dialog.get_element_value( "ruby_skirting_thickness" )
-      skirting_color = dialog.get_element_value( "ruby_skirting_color" )
+      skirting_height = dialog.get_element_value( "k_height_0" )
+      skirting_thickness = dialog.get_element_value( "k_thickness_0" )
 
       rail_inputs = [rail_name,
                      rail_type,
@@ -47,17 +44,17 @@ module ParkTools
                      rail_width,
                      rail_thickness,
                      rail_overhang,
-                     rail_color,
+                     0,
 
                      support_width,
                      support_height,
-                     6,
+                     0,
                      support_density,
-                     support_color,
+                     0,
 
                      skirting_height,
                      skirting_thickness,
-                     skirting_color]
+                     0]
 
       create_rail(*rail_inputs)
 

@@ -1,85 +1,9 @@
-/* updates slider and textbox */
-function updateValue(getValueID, setValueID) {
+/*
 
-    document.getElementById(setValueID).value = document.getElementById(getValueID).value;
+This document contains functions to assist in the DHTML WebUI dialog boxes
 
-}
+ */
 
-/* sets all the variables that are needed to create a rail */
-var rail_name;
-var rail_type;
-var rail_length;
-var rail_width;
-var rail_thickness;
-var rail_overhang;
-var rail_color;
-
-var support_width;
-var support_height;
-var support_density;
-var support_color;
-
-var skirting_height;
-var skirting_thickness;
-var skirting_color;
-
-/* Gets all the input values from HTML dialog box */
-function getValues() {
-
-    rail_name = document.getElementById( "r_name" ).value;
-    document.getElementById( "ruby_rail_name" ).value = rail_name;
-
-    rail_type = document.getElementById( "r_type").value;
-    document.getElementById( "ruby_rail_type" ).value = rail_type;
-
-    rail_length = document.getElementById( "r_length_1" ).value;
-    document.getElementById( "ruby_rail_length" ).value = rail_length;
-
-    rail_width = document.getElementById( "r_width_1" ).value;
-    document.getElementById( "ruby_rail_width" ).value = rail_width;
-
-    rail_thickness = document.getElementById( "r_thickness_1" ).value;
-    document.getElementById( "ruby_rail_thickness" ).value = rail_thickness;
-
-    rail_overhang = document.getElementById( "r_overhang_1" ).value;
-    document.getElementById( "ruby_rail_overhang" ).value = rail_overhang;
-
-    rail_color = document.getElementById( "r_color" ).value;
-    document.getElementById( "ruby_rail_color" ).value = rail_color;
-
-
-    support_width = document.getElementById( "s_width_1" ).value;
-    document.getElementById( "ruby_support_width" ).value = support_width;
-
-    support_height = document.getElementById( "s_height_1" ).value;
-    document.getElementById( "ruby_support_height" ).value = support_height;
-
-    support_density = document.getElementById( "s_density_1" ).value;
-    document.getElementById( "ruby_support_density" ).value = support_density;
-
-    support_color = document.getElementById( "s_color" ).value;
-    document.getElementById( "ruby_support_color" ).value = support_color;
-
-
-    skirting_height = document.getElementById( "k_height_1" ).value;
-    document.getElementById( "ruby_skirting_height" ).value = skirting_height;
-
-    skirting_thickness = document.getElementById( "k_thickness_1" ).value;
-    document.getElementById( "ruby_skirting_thickness" ).value = skirting_thickness;
-
-    skirting_color = document.getElementById( "k_color" ).value;
-    document.getElementById( "ruby_skirting_color" ).value = skirting_color;
-
-}
-
-
-/* Sets the max value given an input's value */
-function max(elementID) {
-
-    var element = document.getElementById(elementID);
-    return element.value;
-
-}
 
 /*
 
@@ -92,8 +16,8 @@ _appendToID is the id of the HTML object that the new input box will be appended
 
  */
 
-// Creates a simple input text box
-// _default_value is the value that will be displayed initially in the text box
+/* Creates a simple input text box
+   _default_value is the value that will be displayed initially in the text box */
 function createInputBox(_caption, _default_value, _id, _appendToID) {
 
     var _appendTo = document.getElementById(_appendToID);
@@ -111,8 +35,8 @@ function createInputBox(_caption, _default_value, _id, _appendToID) {
 }
 
 
-// Creates a selection dropdown menu
-// Options is an array of options in the selection menu, for example ['selection 1', 'selection 2']
+/* Creates a selection dropdown menu
+   Options is an array of options in the selection menu, for example ['selection 1', 'selection 2'] */
 function createSelectorMenu (_caption, _id, _options, _appendToID) {
 
     var selectorMenu = document.createElement("SELECT");
@@ -137,25 +61,32 @@ function createSelectorMenu (_caption, _id, _options, _appendToID) {
 }
 
 
-// Creates a input box and linked input slider
-// _maxBool specifies a scaler maximum
-// If _maxBool is false than _maxAttachElement is the maximum value
-// If _maxBool is true than _maxAttachElement is the id of the element that specifies scaler maximum
+/* Creates a input box and linked input slider
+   _maxBool specifies a scaler maximum
+   If _maxBool is false than _maxAttachElement is the maximum value
+   If _maxBool is true than _maxAttachElement is the id of the element that specifies scaler maximum */
 function createInputSlider (_caption, _id, _value, _min, _maxBool, _maxElement, _step, _appendToID) {
 
+    var _id_1 = _id.concat('_1');
+    var _id_2 = _id.concat('_2');
+
     var inputSliderInputBox = document.createElement("INPUT");
-    inputSliderInputBox.setAttribute('class', 'selector_1');
-    inputSliderInputBox.setAttribute('id', _id + '_1');
-    inputSliderInputBox.setAttribute('value', _value);
+    inputSliderInputBox.className = 'selector_1';
+    inputSliderInputBox.id = _id_1;
+    inputSliderInputBox.value = _value;
 
     var inputSlider = document.createElement("INPUT");
     inputSlider.setAttribute('type', 'range');
-    inputSlider.setAttribute('class', 'selector_2');
-    inputSlider.setAttribute('id', _id + '_2');
-    inputSlider.setAttribute('value', _value);
+    inputSlider.className = 'selector_2';
+    inputSlider.id = _id_2;
+    inputSlider.value = _value;
     inputSlider.setAttribute('min', _min);
     inputSlider.setAttribute('max', _maxElement);
-    inputSlider.setAttribute('step', _step);
+    inputSlider.step = _step;
+
+    // Sets live display of slider value and visa versa
+    inputSlider.addEventListener('input', function(){inputSliderInputBox.value = inputSlider.value});
+    inputSliderInputBox.addEventListener('input', function(){inputSlider.value = inputSliderInputBox.value});
 
     // Sets scaler maximum if _maxBool is true
     if (_maxBool) {
@@ -168,6 +99,9 @@ function createInputSlider (_caption, _id, _value, _min, _maxBool, _maxElement, 
 
     }
 
+    inputSliderInputBox.addEventListener('input', updateValues(inputSlider, inputSliderInputBox));
+    inputSlider.addEventListener('input', updateValues(inputSliderInputBox, inputSlider));
+
     var _appendTo = document.getElementById(_appendToID);
     _appendTo.appendChild(addCaption(_caption));
     _appendTo.appendChild(inputSliderInputBox);
@@ -177,7 +111,7 @@ function createInputSlider (_caption, _id, _value, _min, _maxBool, _maxElement, 
 }
 
 
-// adds a line break to the DOM
+/* adds a line break to the DOM */
 function addBreak() {
 
     return document.createElement("BR");
@@ -185,12 +119,115 @@ function addBreak() {
 }
 
 
-// adds a caption with the caption provided
+/* adds a caption with the caption provided */
 function addCaption(caption) {
 
     var cap = document.createElement("P");
     cap.innerHTML = caption;
 
     return cap;
+
+}
+
+
+function updateValues(getValue, setValue) {
+
+    setValue.value = getValue.value;
+
+}
+
+
+function createNewName(_name, _appendTo) {
+
+    var appendTo = document.getElementById(_appendTo);
+
+    var name = document.createElement("P");
+    name.className = 'center';
+    name.innerHTML = _name;
+
+    appendTo.appendChild(name);
+
+}
+
+
+/* updates slider and textbox */
+function updateValue(getValueID, setValueID) {
+
+    document.getElementById(setValueID).value = document.getElementById(getValueID).value;
+
+}
+
+
+/* Sets the max value given an input's value */
+function max(elementID) {
+
+    var element = document.getElementById(elementID);
+    return element.value;
+
+}
+
+/* Creates a new header and line divider in DOM */
+function createNewHeader(_header, _appendTo) {
+
+    var appendTo = document.getElementById(_appendTo);
+
+    var div_1 = document.createElement("DIV");
+    div_1.className = "row";
+
+    var div_2 = document.createElement("DIV");
+    div_2.className = "col-full";
+
+    var line = document.createElement("DIV");
+    line.className = "col-full divider";
+
+    var heading = document.createElement("P");
+    heading.className = "heading";
+    heading.innerHTML = _header;
+
+    div_2.appendChild(heading);
+    div_1.appendChild(div_2);
+    div_1.appendChild(line);
+    appendTo.appendChild(div_1);
+
+}
+
+
+var rails = 0;
+
+function onBegin() {
+
+    createNewName("Rail " + rails, 'home');
+
+    createNewHeader('Rail Attributes', 'home');
+    createInputBox('Rail Name: ', 'Rail ' + rails, 'r_name'.concat('_'.concat(rails)), 'home');
+    createSelectorMenu('Rail Type: ', 'r_type'.concat('_'.concat(rails)), ['Bar', 'Tube'], 'home');
+    createInputSlider('Rail Length: ', 'r_length'.concat('_'.concat(rails)), 15, 5, false, 100, 5, 'home');
+    createInputSlider('Rail Width: ', 'r_width'.concat('_'.concat(rails)), 6, 1, false, 24, .25, 'home');
+    createInputSlider('Rail Thickness: ', 'r_thickness'.concat('_'.concat(rails)), 2, .5, false, 12, .25, 'home');
+    createInputSlider('Rail Overhang: ', 'r_overhang'.concat('_'.concat(rails)), 6, 0, false, 24, .25, 'home');
+
+    createNewHeader('Support Attributes', 'home');
+    createInputSlider('Support Width: ', 's_width'.concat('_'.concat(rails)), 3, 1, false, 24, .25, 'home');
+    createInputSlider('Support Height: ', 's_height'.concat('_'.concat(rails)), 2, 0, false, 6, .25, 'home');
+    createInputSlider('Support Density: ', 's_density'.concat('_'.concat(rails)), 1, 0, false, 10, 1, 'home');
+
+    createNewHeader('Skirting Attributes', 'home');
+    createInputSlider('Skirting Height: ', 'k_height'.concat('_'.concat(rails)), 8, 0, false, 36, .25, 'home');
+    createInputSlider('Skirting Thickness: ', 'k_thickness'.concat('_'.concat(rails)),.75, 0, false, 4, .25, 'home');
+
+    createNewHeader('', 'home');
+
+    rails += 1;
+
+}
+
+function createHiddenElements() {
+
+    for (var r = 0; r < rails; r++) {
+
+        var test = document.createElement("INPUT");
+        test.type = 'text';
+
+    }
 
 }
