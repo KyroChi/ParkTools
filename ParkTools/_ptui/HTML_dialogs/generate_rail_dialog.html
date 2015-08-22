@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Generate New Rail</title>
+
+        <link rel="stylesheet" type="text/css" href="../CSS/dialog.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/generate_rail_dialog.css">
+
+        <script src="../JS/generate_rail_dialog.js"></script>
+        <script src="../JS/dialog.js"></script>
+
+    </head>
+    <body onload="onBegin()">
+
+        <div class="block">
+            <div class="row input" id="home">
+
+            </div>
+
+            <input type="button" class="center" value="Generate" onclick="getRails(); passValuesToRuby(); closeWindow()">
+            <hr>
+
+        </div>
+
+        <input class="hidden" type="text" id="rails_rails">
+
+        <input class="hidden" type="text" id="ruby_r_name">
+        <input class="hidden" type="text" id="ruby_r_type">
+        <input class="hidden" type="text" id="ruby_r_length">
+        <input class="hidden" type="text" id="ruby_r_width">
+        <input class="hidden" type="text" id="ruby_r_thickness">
+        <input class="hidden" type="text" id="ruby_r_overhang">
+        <input class="hidden" type="text" id="ruby_s_thickness">
+        <input class="hidden" type="text" id="ruby_s_height">
+        <input class="hidden" type="text" id="ruby_s_density">
+        <input class="hidden" type="text" id="ruby_k_height">
+        <input class="hidden" type="text" id="ruby_k_thickness">
+
+
+    </body>
+</html>

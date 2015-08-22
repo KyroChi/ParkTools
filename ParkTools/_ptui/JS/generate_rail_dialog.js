@@ -177,7 +177,7 @@ function createNewHeader(_header, _appendTo) {
     var div_2 = document.createElement("DIV");
     div_2.className = "col-full";
 
-    var line = document.createElement("DIV");
+    var line = document.createElement("HR");
     line.className = "col-full divider";
 
     var heading = document.createElement("P");
@@ -194,26 +194,34 @@ function createNewHeader(_header, _appendTo) {
 
 var rails = 0;
 
+
+function getRails() {
+
+    document.getElementById("rails_rails").value = rails + 1;
+
+}
+
+
 function onBegin() {
 
     createNewName("Rail " + rails, 'home');
 
     createNewHeader('Rail Attributes', 'home');
-    createInputBox('Rail Name: ', 'Rail ' + rails, 'r_name'.concat('_'.concat(rails)), 'home');
-    createSelectorMenu('Rail Type: ', 'r_type'.concat('_'.concat(rails)), ['Bar', 'Tube'], 'home');
-    createInputSlider('Rail Length: ', 'r_length'.concat('_'.concat(rails)), 15, 5, false, 100, 5, 'home');
-    createInputSlider('Rail Width: ', 'r_width'.concat('_'.concat(rails)), 6, 1, false, 24, .25, 'home');
-    createInputSlider('Rail Thickness: ', 'r_thickness'.concat('_'.concat(rails)), 2, .5, false, 12, .25, 'home');
-    createInputSlider('Rail Overhang: ', 'r_overhang'.concat('_'.concat(rails)), 6, 0, false, 24, .25, 'home');
+    createInputBox('Rail Name: ', 'Rail ' + rails, 'r_name', 'home');
+    createSelectorMenu('Rail Type: ', 'r_type', ['Bar', 'Tube'], 'home');
+    createInputSlider('Rail Length: ', 'r_length', 15, 5, false, 100, 5, 'home');
+    createInputSlider('Rail Width: ', 'r_width', 6, 1, false, 24, .25, 'home');
+    createInputSlider('Rail Thickness: ', 'r_thickness', 2, .5, false, 12, .25, 'home');
+    createInputSlider('Rail Overhang: ', 'r_overhang', 6, 0, false, 24, .25, 'home');
 
     createNewHeader('Support Attributes', 'home');
-    createInputSlider('Support Width: ', 's_width'.concat('_'.concat(rails)), 3, 1, false, 24, .25, 'home');
-    createInputSlider('Support Height: ', 's_height'.concat('_'.concat(rails)), 2, 0, false, 6, .25, 'home');
-    createInputSlider('Support Density: ', 's_density'.concat('_'.concat(rails)), 1, 0, false, 10, 1, 'home');
+    createInputSlider('Support Width: ', 's_width', 3, 1, false, 24, .25, 'home');
+    createInputSlider('Support Height: ', 's_height', 2, 0, false, 6, .25, 'home');
+    createInputSlider('Support Density: ', 's_density', 1, 0, false, 10, 1, 'home');
 
     createNewHeader('Skirting Attributes', 'home');
-    createInputSlider('Skirting Height: ', 'k_height'.concat('_'.concat(rails)), 8, 0, false, 36, .25, 'home');
-    createInputSlider('Skirting Thickness: ', 'k_thickness'.concat('_'.concat(rails)),.75, 0, false, 4, .25, 'home');
+    createInputSlider('Skirting Height: ', 'k_height', 8, 0, false, 36, .25, 'home');
+    createInputSlider('Skirting Thickness: ', 'k_thickness',.75, 0, false, 4, .25, 'home');
 
     createNewHeader('', 'home');
 
@@ -221,13 +229,22 @@ function onBegin() {
 
 }
 
-function createHiddenElements() {
 
-    for (var r = 0; r < rails; r++) {
+function passValuesToRuby() {
 
-        var test = document.createElement("INPUT");
-        test.type = 'text';
+    //document.getElementById("ruby_r_name").value = document.getElementById("r_name").value;
+    //alert(document.getElementById("r_length").value);
+    //document.getElementById("ruby_r_type").value = document.getElementById("r_type").value;
+    //document.getElementById("ruby_r_length").value = document.getElementById("r_length_0").value;
+    //document.getElementById("ruby_r_width").value = document.getElementById("r_width_0").value;
+    //document.getElementById("ruby_r_thickness").value = document.getElementById("r_thickness_0").value;
+    //document.getElementById("ruby_r_overhang").value = document.getElementById("r_overhang_0").value;
 
-    }
+    //document.getElementById("ruby_s_thickness").value = document.getElementById("s_width_0").value;
+    //document.getElementById("ruby_s_height").value = document.getElementById("s_height_0").value;
+    //document.getElementById("ruby_s_density").value = document.getElementById("s_density_0").value;
+
+    //document.getElementById("ruby_k_height").value = document.getElementById("k_height_0").value;
+    //document.getElementById("ruby_k_thickness").value = document.getElementById("k_thickness_0").value;
 
 }
