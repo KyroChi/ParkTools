@@ -4,7 +4,7 @@ A rail creating plugin for Sketchup designed for terrain park designers to strea
 
 ### Know Issues
 
-"Color" option appears but isn't currently implemented
+"Color" option appears but isn't currently implemented, working on fix
 
 ### TODO
 
