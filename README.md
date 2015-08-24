@@ -15,3 +15,4 @@ A rail creating plugin for Sketchup designed for terrain park designers to strea
 * Add support for C and S rails
 * Add support for snow pads
 * Add support for jump lines
+* Add Live generation view
